@@ -1,7 +1,7 @@
-package com.xworkz.collectionIntro.runner;
+package com.xworkz.collectionIntro.add.runner;
 
-import com.xworkz.collectionIntro.constant.Status;
-import com.xworkz.collectionIntro.dto.CategoryDTO;
+import com.xworkz.collectionIntro.add.constant.Status;
+import com.xworkz.collectionIntro.add.dto.CategoryDTO;
 
 import java.util.ArrayList;
 import java.util.Collection;

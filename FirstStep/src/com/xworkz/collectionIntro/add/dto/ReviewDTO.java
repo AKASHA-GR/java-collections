@@ -1,4 +1,4 @@
-package com.xworkz.collectionIntro.dto;
+package com.xworkz.collectionIntro.add.dto;
 
 import java.io.Serializable;
 

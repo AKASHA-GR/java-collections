@@ -1,6 +1,6 @@
-package com.xworkz.collectionIntro.runner;
+package com.xworkz.collectionIntro.add.runner;
 
-import com.xworkz.collectionIntro.dto.InventoryDTO;
+import com.xworkz.collectionIntro.add.dto.InventoryDTO;
 
 import java.util.ArrayList;
 import java.util.Collection;
