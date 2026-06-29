@@ -7,14 +7,14 @@ import java.util.Collection;
 
 public class DiscountRunner {
     public static void main(String[] args) {
-        Collection<DiscountDTO> discount = new ArrayList<>();
+        Collection<DiscountDTO> discountDTOS = new ArrayList<>();
 
         DiscountDTO discountDTO = new DiscountDTO(4401,"SBVKABFVA","Special Customer","20%","02/24/2027");
         DiscountDTO discountDTO1 = new DiscountDTO(4402,"BIREVBAK","Special Customer","15%","01/03/2027");
 
-        discount.add(discountDTO);
-        discount.add(discountDTO1);
-        System.out.println("The Discount details:"+discount.size());
-        System.out.println("The Discount details:"+discount);
+        discountDTOS.add(discountDTO);
+        discountDTOS.add(discountDTO1);
+        System.out.println("The Discount details:"+ discountDTOS.size());
+        System.out.println("The Discount details:"+ discountDTOS);
     }
 }

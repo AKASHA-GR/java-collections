@@ -1,6 +1,6 @@
 package com.xworkz.collectionIntro.dto;
 
-import com.xworkz.collectionIntro.constent.Status;
+import com.xworkz.collectionIntro.constant.Status;
 
 import java.io.Serializable;
 
