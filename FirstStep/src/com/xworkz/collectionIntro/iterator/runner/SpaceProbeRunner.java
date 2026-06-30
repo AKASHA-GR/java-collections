@@ -1095,6 +1095,34 @@ public class SpaceProbeRunner {
         System.out.println("How many probes have missionDurationDays greater than 365:"+count4);
         System.out.println();
 
+        //Count probes
+        int count5 = 0;
+
+        Iterator<SpaceProbeDTO> itrCount5 = spaceProbeDTOS.iterator();
+
+        while (itrCount5.hasNext()){
+            SpaceProbeDTO element = itrCount5.next();
+            if(element.getPowerOutput() > 1000){
+                count5++;
+            }
+        }
+        System.out.println("Count probes with powerOutput above 1000 watts:"+count5);
+        System.out.println();
+
+        //Count probes
+        int count6 = 0;
+
+        Iterator<SpaceProbeDTO> itrCount6 = spaceProbeDTOS.iterator();
+
+        while (itrCount6.hasNext()){
+            SpaceProbeDTO element = itrCount6.next();
+            if(element.getDistanceFromEarth() < 1000000){
+                count6++;
+            }
+        }
+        System.out.println("How many probes are within 1 million km of Earth:"+count6);
+        System.out.println();
+
 
 
 
