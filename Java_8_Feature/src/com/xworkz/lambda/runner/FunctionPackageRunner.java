@@ -68,9 +68,74 @@ public class FunctionPackageRunner {
                 System.out.println("20. ObjIntConsumer: " + s + " " + x);
         function20.accept("Age", 22);
 
+        ObjLongConsumer<String>  function21 = (s,x) -> System.out.println("21.ObjLongConsumer:"+s+" " +x);
+        function21.accept("Salary",50000L);
 
+        ObjDoubleConsumer<String> function22 = (s,x) -> System.out.println("22.ObjDoubleConsumer:"+s+" "+x);
+        function22.accept("Marks",95.5);
 
+        IntFunction<String> function23 = (x) -> "Values:" +x;
+        System.out.println("23.IntFuction:"+function23.apply(5));
 
+        LongFunction<String> function24 = (x) -> "Long:"+x;
+        System.out.println("24.LongFuction:"+function24.apply(1234566666643L));
 
+        DoubleFunction<String> function25 = (x) -> "Double:" +x;
+        System.out.println("25.DoubleFunction:"+function25.apply(34.8));
+
+        ToIntFunction<String> function26 = (s) -> s.length();
+        System.out.println("26.ToIntFunction:"+function26.applyAsInt("Java"));
+
+        ToLongFunction<String> function27 = (s) -> s.length() * 10L;
+        System.out.println("27.ToIntFunction:"+ function27.applyAsLong("Java"));
+
+        ToDoubleFunction<String> function28 = (s) -> s.length() * 2.5;
+        System.out.println("28.ToIntFunction:"+ function28.applyAsDouble("Java"));
+
+        IntToLongFunction function29 = x -> x * 100L;
+        System.out.println("29.IntToLongFunction:"+function29.applyAsLong(5));
+
+        IntToDoubleFunction function30 = x -> x * 1.5;
+        System.out.println("30.IntToLongFunction:"+ function30.applyAsDouble(5));
+
+        LongToIntFunction function31 = x -> (int)x ;
+        System.out.println("31.IntToLongFunction:"+ function31.applyAsInt(100L));
+
+        LongToDoubleFunction function32 = x -> x * 2.5;
+        System.out.println("32.LongToDoubleFunction:"+ function32.applyAsDouble(20));
+
+        DoubleToIntFunction function33 = x -> (int)x;
+        System.out.println("33.DoubleToLongFunction:"+function33.applyAsInt(15.6));
+
+        DoubleToLongFunction function34 = x -> (long) x;
+        System.out.println("34.DoubleToLongFunction:"+function34.applyAsLong(99.7));
+
+        IntUnaryOperator function35 = x -> x+10;
+        System.out.println("35.IntUnaryOperator:"+function35.applyAsInt(5));
+
+        LongUnaryOperator function36 = x -> x+100L;
+        System.out.println("36.LongUnaryOperator:"+function36.applyAsLong(50));
+
+        DoubleUnaryOperator function37 = x -> x+100L;
+        System.out.println("37.LongUnaryOperator:"+function37.applyAsDouble(5.5));
+
+        IntBinaryOperator function38 = (a,b) -> a+b;
+        System.out.println("38.IntBinaryOperator:"+function38.applyAsInt(33,77));
+
+        LongBinaryOperator function39 = (a, b) -> a*b;
+        System.out.println("38.IntBinaryOperator:"+ function39.applyAsLong(50,60));
+
+        DoubleBinaryOperator function40 = (a, b) -> a/b;
+        System.out.println("38.IntBinaryOperator:"+ function40.applyAsDouble(10,1000));
+
+        ToIntBiFunction<String,String> function41 = (a, b) ->a.length() + b.length();
+        System.out.println("41.ToIntBiFunction:"+function41.applyAsInt("Hi","Java"));
+
+        ToLongBiFunction<String,String> function42 = (a, b) ->a.length() + b.length()*10L;
+        System.out.println("42.ToIntBiFunction:"+function42.applyAsLong("Hi","JDBC"));
+
+        ToDoubleBiFunction<String,String> function43 = (a, b) ->a.length() + b.length();
+        System.out.println("43.ToIntBiFunction:"+ function43.applyAsDouble("Hi","SQL"));
+        
     }
 }
