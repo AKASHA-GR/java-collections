@@ -136,6 +136,6 @@ public class FunctionPackageRunner {
 
         ToDoubleBiFunction<String,String> function43 = (a, b) ->a.length() + b.length();
         System.out.println("43.ToIntBiFunction:"+ function43.applyAsDouble("Hi","SQL"));
-        
+
     }
 }
