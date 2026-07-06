@@ -108,7 +108,7 @@ public class OwnFunctionalInterfaceRunner {
         System.out.println("Teh Cube of 7:"+cube.cube(7));
         System.out.println("=======================================================");
 
-        
+
 
 
 
