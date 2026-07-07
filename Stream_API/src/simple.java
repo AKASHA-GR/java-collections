@@ -12,6 +12,8 @@ public class simple {
             }
         }
 
+        System.out.println("=============================================");
+
 
         names.stream()
                 .filter(name -> name.startsWith("A"))
