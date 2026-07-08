@@ -1,4 +1,4 @@
-package com.xworkz.collectionIntro.sorting.dto;
+package com.xworkz.collectionIntro.sorting.runner;
 
 import java.util.*;
 
