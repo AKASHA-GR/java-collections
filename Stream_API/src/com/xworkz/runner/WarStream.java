@@ -78,7 +78,7 @@ public class WarStream {
                         "Territorial dispute")
         );
 
-
+        // BASIC PROPERTY FILTERING 1111111111111111111111111111111111111111111111111111111111111111111
         System.out.println("The Name starting with a specific letter W:");
         wars.stream()
             .filter(warDTO -> warDTO.getWarName().startsWith("W"))
@@ -104,10 +104,114 @@ public class WarStream {
         System.out.println();
 
 
-        System.out.println("The war reason is:");
+        System.out.println("The wars reason is:");
         wars.stream()
-                .filter(war -> war.getReason().equalsIgnoreCase("Territorial dispute:"))
+                .filter(warDTO -> warDTO.getReason().equalsIgnoreCase("Territorial dispute"))
                 .forEach(warDTO -> System.out.println(warDTO));
         System.out.println();
+
+        //DATE FILTERING 22222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222
+        System.out.println("The wars that started after 1900:");
+        wars.stream()
+                .filter(warDTO -> warDTO.getStartDate().isAfter(LocalDate.of(1900,1,1)))
+                .forEach(warDTO -> System.out.println(warDTO));
+        System.out.println();
+
+        System.out.println("The wars that ended before 1800:");
+        wars.stream()
+                .filter(warDTO -> warDTO.getEndDate().isBefore(LocalDate.of(1800,1,1)))
+                .forEach(warDTO -> System.out.println(warDTO));
+        System.out.println();
+
+        System.out.println("The wars that occurred in a 20th century:");
+        wars.stream()
+                .filter(warDTO -> warDTO.getStartDate().getYear() >= 1901 && warDTO.getStartDate().getYear() <= 2000)
+                .forEach(warDTO -> System.out.println(warDTO));
+        System.out.println();
+
+        System.out.println("The wars with duration greater than 365 days:");
+        wars.stream()
+                .filter(warDTO -> warDTO.getDurationDays() > 365)
+                .forEach(warDTO -> System.out.println(warDTO));
+        System.out.println();
+
+        System.out.println("The wars with duration less than 30 days:");
+        wars.stream()
+                .filter(warDTO -> warDTO.getDurationDays() < 30)
+                .forEach(warDTO -> System.out.println(warDTO));
+        System.out.println();
+
+
+        // NUMERICAL FILTERING 333333333333333333333333333333333333333333333333
+
+        System.out.println("The Casualties > 100000: ");
+        wars.stream()
+                .filter(warDTO -> warDTO.getCasualties() > 100000)
+                .forEach(warDTO -> System.out.println(warDTO));
+        System.out.println();
+
+
+        System.out.println("The Casualties < 10000:");
+        wars.stream()
+                .filter(warDTO -> warDTO.getCasualties() < 10000)
+                .forEach(warDTO -> System.out.println(warDTO));
+        System.out.println();
+
+        System.out.println("The Casualties between 50000 and 500000:");
+        wars.stream()
+                .filter(warDTO -> warDTO.getCasualties() >= 50000 && warDTO.getCasualties() <= 500000)
+                .forEach(warDTO -> System.out.println(warDTO));
+        System.out.println();
+
+        System.out.println("The Duration divisible by 7:");
+        wars.stream()
+                .filter(warDTO -> warDTO.getDurationDays() % 7 == 0)
+                .forEach(warDTO -> System.out.println(warDTO));
+        System.out.println();
+
+
+        //COLLECTION FILTERING 44444444444444444444444444444444444444444444444444444444444444444444444
+
+        System.out.println("The  Wars involving India:");
+        wars.stream()
+                .filter(warDTO -> warDTO.getCountriesInvolved().contains("India"))
+                .forEach(warDTO -> System.out.println(warDTO));
+        System.out.println();
+
+        System.out.println("The More than 3 countries:");
+        wars.stream()
+                .filter(warDTO -> warDTO.getCountriesInvolved().size() > 3)
+                .forEach(warDTO -> System.out.println(warDTO));
+        System.out.println();
+
+        System.out.println("The Exactly 2 countries:");
+        wars.stream()
+                .filter(warDTO -> warDTO.getCountriesInvolved().size() == 2)
+                .forEach(warDTO -> System.out.println(warDTO));
+        System.out.println();
+
+
+        // ADVANCED FILTERING
+
+        System.out.println("The Casualties > 50000 AND Duration >100:");
+        wars.stream()
+                .filter(warDTO -> warDTO.getCasualties() > 500000 && warDTO.getDurationDays() > 100)
+                .forEach(warDTO -> System.out.println(warDTO));
+        System.out.println();
+
+        System.out.println("The Commander contains 'Gen':");
+        wars.stream()
+                .filter(warDTO -> warDTO.getCommander().contains("Gen"))
+                .forEach(warDTO -> System.out.println(warDTO));
+        System.out.println();
+
+        System.out.println("The Asia + Victory + Casualties >10000:");
+        wars.stream()
+                .filter(warDTO -> warDTO.getLocation().equalsIgnoreCase("Asia"))
+                .filter(warDTO -> warDTO.getOutcome().equalsIgnoreCase("Victory"))
+                .filter(warDTO -> warDTO.getCasualties() > 10000)
+                .forEach(warDTO -> System.out.println(warDTO));
+        System.out.println();
+
     }
 }
