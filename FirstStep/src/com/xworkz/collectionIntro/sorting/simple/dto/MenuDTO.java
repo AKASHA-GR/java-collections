@@ -1,4 +1,4 @@
-package com.xworkz.collectionIntro.sorting.dto;
+package com.xworkz.collectionIntro.sorting.simple.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

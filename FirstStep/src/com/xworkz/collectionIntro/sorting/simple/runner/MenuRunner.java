@@ -1,6 +1,6 @@
-package com.xworkz.collectionIntro.sorting.runner;
+package com.xworkz.collectionIntro.sorting.simple.runner;
 
-import com.xworkz.collectionIntro.sorting.dto.MenuDTO;
+import com.xworkz.collectionIntro.sorting.simple.dto.MenuDTO;
 
 import java.util.ArrayList;
 import java.util.Collections;
