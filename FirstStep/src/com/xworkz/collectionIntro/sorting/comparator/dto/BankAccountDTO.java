@@ -12,15 +12,10 @@ import java.util.Comparator;
 @Setter
 @Getter
 @ToString
-public class BankAccountDTO implements Serializable, Comparator<BankAccountDTO> {
+public class BankAccountDTO implements Serializable{
 
     private long accountNumber;
     private String holderName;
     private double balance;
 
-
-    @Override
-    public int compare(BankAccountDTO o1, BankAccountDTO o2) {
-        return 0;
-    }
 }

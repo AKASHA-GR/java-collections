@@ -12,15 +12,11 @@ import java.util.Comparator;
 @Setter
 @Getter
 @ToString
-public class FlightDTO implements Serializable, Comparator<FlightDTO> {
+public class FlightDTO implements Serializable{
 
     private String flightName;
     private double ticketPrice;
     private int duration;
     private String destination;
 
-    @Override
-    public int compare(FlightDTO o1, FlightDTO o2) {
-        return 0;
-    }
 }

@@ -12,14 +12,9 @@ import java.util.Comparator;
 @Getter
 @Setter
 @AllArgsConstructor
-public class UniversityDTO implements Serializable, Comparator<UniversityDTO> {
+public class UniversityDTO implements Serializable{
 
     private String universityName;
     private int studentCount;
 
-
-    @Override
-    public int compare(UniversityDTO o1, UniversityDTO o2) {
-        return 0;
-    }
 }

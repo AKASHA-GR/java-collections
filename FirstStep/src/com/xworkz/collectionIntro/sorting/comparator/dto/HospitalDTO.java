@@ -12,7 +12,7 @@ import java.util.Comparator;
 @Setter
 @AllArgsConstructor
 @ToString
-public class HospitalDTO implements Serializable, Comparator<HospitalDTO> {
+public class HospitalDTO implements Serializable {
 
     private int patientId;
     private String patientName;
@@ -20,8 +20,5 @@ public class HospitalDTO implements Serializable, Comparator<HospitalDTO> {
     private String disease;
 
 
-    @Override
-    public int compare(HospitalDTO o1, HospitalDTO o2) {
-        return Integer.compare(o1.age, o2.age);
-    }
+
 }

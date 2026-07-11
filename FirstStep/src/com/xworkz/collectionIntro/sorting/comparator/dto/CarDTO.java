@@ -12,14 +12,10 @@ import java.util.Comparator;
 @ToString
 @Setter
 @AllArgsConstructor
-public class CarDTO implements Serializable, Comparator<CarDTO> {
+public class CarDTO implements Serializable {
 
     private String company;
     private String model;
     private double price;
 
-    @Override
-    public int compare(CarDTO o1, CarDTO o2) {
-        return 0;
-    }
 }
