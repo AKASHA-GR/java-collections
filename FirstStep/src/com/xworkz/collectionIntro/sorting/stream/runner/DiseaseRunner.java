@@ -2,8 +2,8 @@ package com.xworkz.collectionIntro.sorting.stream.runner;
 
 import com.xworkz.collectionIntro.sorting.stream.dto.DiseaseDTO;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class DiseaseRunner {
     public static void main(String[] args) {
@@ -247,14 +247,183 @@ public class DiseaseRunner {
 
 
         //Sort diseases by symptoms.
-        System.out.println("\n Sort diseases by symptoms:");
+        System.out.println("\nSort diseases by symptoms:");
+        diseaseDTOS.stream()
+                .sorted((diseaseDTO1,diseaseDTO2) -> diseaseDTO1.getSymptoms().compareTo(diseaseDTO2.getSymptoms()))
+                .forEach(diseaseDTO -> System.out.println(diseaseDTO.getName()+" - "+diseaseDTO.getSymptoms()));
+
+
+        //Sort diseases by etiology.
+        System.out.println("\nSort diseases by etiology:");
+        diseaseDTOS.stream()
+                .sorted((diseaseDTO1,diseaseDTO2) -> diseaseDTO1.getEtiology().compareTo(diseaseDTO2.getEtiology()))
+                .forEach(diseaseDTO -> System.out.println(diseaseDTO));
+
+
+        //Sort by name then id.
+        System.out.println("\nSort by name then id:");
+        diseaseDTOS.stream()
+                .sorted((d1, d2) -> {
+                    int nameComparison = d1.getName().compareTo(d2.getName());
+                    return nameComparison != 0 ? nameComparison : Integer.compare(d1.getId(), d2.getId());
+                })
+                .forEach(diseaseDTO -> System.out.println(diseaseDTO.getId()+" - "+diseaseDTO.getName()));
+
+
+        //Sort by cause then name.
+        System.out.println("\nSort by cause then name:");
+        diseaseDTOS.stream()
+                .sorted(Comparator.comparing(DiseaseDTO::getCause).thenComparing(DiseaseDTO::getName))
+                .forEach(diseaseDTO -> System.out.println(diseaseDTO.getId()+" - "+diseaseDTO.getName()));
+
+
+        //Sort by treatment then prevention.
+        System.out.println("\nSort by treatment then prevention:");
+        diseaseDTOS.stream()
+                .sorted((diseaseDTO1,diseaseDTO2) -> {
+                    int  treat = diseaseDTO1.getTreatment().compareTo(diseaseDTO2.getTreatment());
+                    return treat != 0 ? treat : diseaseDTO1.getPrevention().compareTo(diseaseDTO2.getPrevention());
+                })
+                .forEach(diseaseDTO -> System.out.println(diseaseDTO.getId()+" - "+diseaseDTO.getName()));
+
+
+        //Collect only disease names into List.
+        System.out.println("\nCollect only disease names into List:");
+        List<String> names = diseaseDTOS.stream()
+                .map(DiseaseDTO::getName)
+                .collect(Collectors.toList());
+        System.out.println("The list:"+names);
+
+        //Collect disease names into Set.
+        System.out.println("\nCollect disease names into Set:");
+        Set<String> names1 = diseaseDTOS.stream()
+                .map(DiseaseDTO::getName)
+                .collect(Collectors.toSet());
+        System.out.println("The set:"+ names1);
+
+
+        //Create Map name -> description
+        System.out.println("\n Create Map name -> description:");
+        Map<String, String> nameDescriptionMap = diseaseDTOS.stream()
+                .collect(Collectors.toMap(diseaseDTO -> diseaseDTO.getName(), DiseaseDTO::getDescription));
+        System.out.println("The map:"+nameDescriptionMap);
+
+
+        //Create Map id -> name
+        System.out.println("\nCreate Map id -> name:");
+        Map<Integer,String> idNameMap = diseaseDTOS.stream()
+                .collect(Collectors.toMap(DiseaseDTO::getId, DiseaseDTO::getName));
+        System.out.println("The map:"+idNameMap);
+
+
+        //Join all disease names using ,
+        System.out.println("\nJoin all disease names using , :");
+        String names2 = diseaseDTOS.stream()
+                .map(DiseaseDTO::getName)
+                .collect(Collectors.joining(","))
+                .toString();
+        System.out.println("The string:"+names2);
+
+
+        //Group diseases by cause.
+        System.out.println("\nGroup diseases by cause:");
+        diseaseDTOS.stream()
+                .collect(Collectors.groupingBy(DiseaseDTO::getCause))
+                .forEach((cause, diseases) -> System.out.println(cause + " -> " + diseases));
+
+
+        //Group diseases by cure.
+        System.out.println("\nGroup diseases by cure:");
+        diseaseDTOS.stream()
+                .collect(Collectors.groupingBy(DiseaseDTO::getCure))
+                .forEach((cure, diseases) -> System.out.println(cure + " -> " + diseases));
+
+
+        //Group diseases by etiology.
+        System.out.println("\nGroup diseases by etiology:");
+        diseaseDTOS.stream()
+                .collect(Collectors.groupingBy(DiseaseDTO::getEtiology))
+                .forEach((etiology, diseases) -> System.out.println(etiology + " -> " + diseases));
+
+
+        //Partition diseases Curable ,Not Curable
+        System.out.println("\nPartition diseases Curable ,Not Curable:");
+        Map<Boolean, List<DiseaseDTO>> partitionedDiseases = diseaseDTOS.stream()
+                .collect(Collectors.partitioningBy(diseaseDTO -> !diseaseDTO.getCure().contains("No Cure"), Collectors.toList()));
+        partitionedDiseases.forEach((curable, diseases) -> System.out.println(curable + " -> " + diseases));
+
+
+        //Collect filtered diseases into LinkedList
+        System.out.println("\nCollect filtered diseases into LinkedList:");
+        LinkedList<DiseaseDTO> filteredDiseases = diseaseDTOS.stream()
+                .filter(diseaseDTO -> !diseaseDTO.getCure().contains("No Cure"))
+                .collect(Collectors.toCollection(LinkedList::new));
+        filteredDiseases.forEach(disease -> System.out.println(disease));
+
+
+        //Count viral diseases.
+        System.out.println("\nCount viral diseases:");
+        long viralDiseaseCount = diseaseDTOS.stream()
+                .filter(diseaseDTO -> diseaseDTO.getEtiology().contains("Viral"))
+                .count();
+        System.out.println("Viral disease count: " + viralDiseaseCount);
+
+
+        //Count bacterial diseases.
+        System.out.println("\nCount bacterial diseases:");
+        long bacterialCount = diseaseDTOS.stream()
+                .filter(diseaseDTO -> diseaseDTO.getEtiology().contains("Bacterial"))
+                .count();
+        System.out.println("Bacterials disease count:"+bacterialCount);
 
 
 
+        //Check whether all diseases have symptoms.
+        System.out.println("\nCheck whether all diseases have symptoms:");
+        boolean allHaveSymptoms = diseaseDTOS.stream()
+                .allMatch(diseaseDTO -> !diseaseDTO.getSymptoms().isEmpty());
+        System.out.println("All diseases have symptoms: " + allHaveSymptoms);
 
 
+        //Check whether any disease is caused by fungi.
+        System.out.println("\nCheck whether any disease is caused by fungi:");
+        boolean anyFungal = diseaseDTOS.stream()
+                .anyMatch(diseaseDTO -> diseaseDTO.getEtiology().contains("Fungal"));
+        System.out.println("Any fungal disease: " + anyFungal);
 
 
+        //Check whether no disease has null name.
+        System.out.println("\nCheck whether no disease has null name:");
+        boolean noNullName = diseaseDTOS.stream()
+                .noneMatch(diseaseDTO -> diseaseDTO.getName() == null);
+        System.out.println("No null name: " + noNullName);
+
+
+        //Find first viral disease.
+        System.out.println("\nFind first viral disease:");
+        Optional<DiseaseDTO> firstViral = diseaseDTOS.stream()
+                .filter(diseaseDTO -> diseaseDTO.getEtiology().contains("Viral"))
+                .findFirst();
+        firstViral.ifPresent(diseaseDTO -> System.out.println("First viral disease: " + diseaseDTO));
+
+
+        //Find any bacterial disease.
+        System.out.println("\nFind any bacterial disease:");
+        Optional<DiseaseDTO> anyBacterial = diseaseDTOS.stream()
+                .filter(diseaseDTO -> diseaseDTO.getEtiology().contains("Bacterial"))
+                .findAny();
+        anyBacterial.ifPresent(diseaseDTO -> System.out.println("Any bacterial disease: " + diseaseDTO));
+
+
+        //Find first disease whose prevention contains Mask
+        System.out.println("\nFind first disease whose prevention contains Mask:");
+        Optional<DiseaseDTO> firstMask = diseaseDTOS.stream()
+                .filter(diseaseDTO -> diseaseDTO.getPrevention().contains("Mask"))
+                .findFirst();
+        firstMask.ifPresent(diseaseDTO -> System.out.println("First disease with mask: " + diseaseDTO));
+
+
+        
 
 
 
