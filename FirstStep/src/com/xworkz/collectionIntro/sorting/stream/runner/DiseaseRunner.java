@@ -423,7 +423,7 @@ public class DiseaseRunner {
         firstMask.ifPresent(diseaseDTO -> System.out.println("First disease with mask: " + diseaseDTO));
 
 
-        
+
 
 
 
