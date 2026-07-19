@@ -16,6 +16,7 @@ public class Simple {
         map.put(300,"Sagar");
 
         System.out.println(map);
+        System.out.println("The map size:"+map.size());
         System.out.println();
 
 
@@ -27,6 +28,12 @@ public class Simple {
         map1.put(300,"Sagar");
 
         System.out.println(map1);
+        System.out.println("The map size:"+map1.size());
+        System.out.println(map1.get(100));
+        System.out.println(map1.remove(300));
+        System.out.println(map1.containsKey(100));
+        System.out.println(map1.containsValue("Akasha"));
+        System.out.println(map1.containsValue("Priya"));
         System.out.println();
 
 
