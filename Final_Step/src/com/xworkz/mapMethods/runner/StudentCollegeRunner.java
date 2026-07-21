@@ -48,7 +48,45 @@ public class StudentCollegeRunner {
         System.out.println("Check the key is exist or not:");
         System.out.println(map.containsKey(new StudentDTO(101,"Akasha",23,"Computer science",8.1)));
 
-        
+        System.out.println("\nCheck the size of the map:");
+        System.out.println(map.size());
+
+        System.out.println("\ncheck if the map is empty or not:");
+        System.out.println(map.isEmpty());
+
+        System.out.println("\nThe keys:");
+        map.keySet().forEach(k -> System.out.println(k));
+
+        System.out.println("\nThe values:");
+        map.values().forEach(v -> System.out.println(v));
+
+        System.out.println();
+        map.replace(new StudentDTO(101, "Rahul", 23, "Mechanical", 8.5),new CollegeDTO(1,"Government Engineering college,challakere","Challakere","VTU",2021));
+
+        System.out.println(map.get(new StudentDTO(101, "Rahul", 23, "Mechanical", 8.5)));
+//        map.entrySet().forEach(entry -> {
+//            System.out.println(entry.getKey());
+//            System.out.println(entry.getValue());
+//        });
+
+        System.out.println();
+
+        map.replace(new StudentDTO(101, "Rahul", 23, "Mechanical", 8.5),new CollegeDTO(1,"Government Engineering college,challakere","Challakere","VTU",2021), new CollegeDTO(1, "SVN College of Engineering", "Chennai", "Anna University", 2010));
+        System.out.println(map.get(new StudentDTO(101, "Rahul", 23, "Mechanical", 8.5)));
+
+        System.out.println();
+
+        map.remove(new StudentDTO(101, "Rahul", 23, "Mechanical", 8.5));
+        System.out.println(map.get(new StudentDTO(101, "Rahul", 23, "Mechanical", 8.5)));
+
+        System.out.println();
+
+        map.remove(new StudentDTO(102, "Shruti", 24, "Electrical", 7.9), new CollegeDTO(2, "JSS College of Engineering", "Bangalore", "Karnataka University", 2003));
+
+        map.entrySet().forEach(entry -> {
+            System.out.println(entry.getKey());
+            System.out.println(entry.getValue());
+        });
 
     }
 }
