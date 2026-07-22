@@ -88,5 +88,20 @@ public class StudentCollegeRunner {
             System.out.println(entry.getValue());
         });
 
+        map.remove(new StudentDTO(102, "Shruti", 24, "Electrical", 7.9), new CollegeDTO(2, "JSS College of Engineering", "Bangalore", "Karnataka University", 2003));
+
+        map.entrySet().forEach(entry -> {
+            System.out.println(entry.getKey());
+            System.out.println(entry.getValue());
+        });
+
+
+        map.remove(new StudentDTO(102, "Shruti", 24, "Electrical", 7.9), new CollegeDTO(2, "JSS College of Engineering", "Bangalore", "Karnataka University", 2003));
+
+        map.entrySet().forEach(entry -> {
+            System.out.println(entry.getKey());
+            System.out.println(entry.getValue());
+        });
+
     }
 }
