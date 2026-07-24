@@ -2,8 +2,7 @@ package com.xworkz.map.hashtable.runner;
 
 import com.xworkz.map.hashtable.dto.BikeDTO;
 
-import java.util.Hashtable;
-import java.util.Map;
+import java.util.*;
 
 public class BikeRunner {
     public static void main(String[] args) {
@@ -40,6 +39,10 @@ public class BikeRunner {
         map.replace(1016, new BikeDTO("Hero Splendor Plus"," Hero MotoCorp",77777,70));
         System.out.println(map.get(1016));
         System.out.println();
+
+
+
+
 
 
     }
